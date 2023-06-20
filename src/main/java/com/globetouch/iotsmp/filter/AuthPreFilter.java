@@ -37,25 +37,25 @@ public class AuthPreFilter implements GlobalFilter {
 		if(authorizationStatus){
 			return chain.filter(exchange);
 		}
-		return Mono.error(new Throwable("Not Authorized Successfully."));
+		return Mono.error(new Throwable("Not Authorized."));
 	}
 
 	private static boolean validateToken(String token) {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
-		HttpGet httpGet = new HttpGet("https://192.168.1.37:8020/api/v2/token/verification");
+		HttpGet httpGet = new HttpGet("http://192.168.1.37:7979/api/v2/token/verification");
 		httpGet.addHeader(AUTH_TOKEN, token);
 		CloseableHttpResponse response = null;
 		try {
 			response = httpclient.execute(httpGet);
 			StatusLine statusLine = response.getStatusLine();
             if (statusLine == null || statusLine.getStatusCode() != 200) {
-				log.error("Authorization failed, ", statusLine.getStatusCode());
+				log.error("Authorization failed.., ", statusLine.getStatusCode());
 				return false;
             }
 			String msg = IOUtils.toString(response.getEntity().getContent());
 			System.out.println("response: "+msg);
 		} catch (Exception e) {
-			log.error("Authorization failed, ", e.getMessage());
+			log.error("Authorization failed. ", e.getMessage());
 			e.printStackTrace();
 			return false;
 		}finally {

@@ -13,9 +13,8 @@
 	<version>1.0.0</version>
 	<name>GControl-api-gateway-service</name>
 	<description>GControl api gateway service</description>
-	<packaging>war</packaging>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 		<spring-cloud.version>2020.0.2</spring-cloud.version>
 	</properties>
 	<dependencies>
@@ -83,10 +82,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-				</configuration>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 		<finalName>GControl-api-gateway-service</finalName>

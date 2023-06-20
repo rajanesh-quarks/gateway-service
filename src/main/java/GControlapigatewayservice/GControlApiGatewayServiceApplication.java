@@ -19,16 +19,12 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 @EnableEurekaClient
 @EnableHystrix
 @ComponentScan(basePackages = "com.globetouch.iotsmp")
-public class GControlApiGatewayServiceApplication extends SpringBootServletInitializer {
+public class GControlApiGatewayServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GControlApiGatewayServiceApplication.class, args);
     }
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(GControlApiGatewayServiceApplication.class);
-    }
 }
 
 @Configuration
